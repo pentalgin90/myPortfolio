@@ -1,0 +1,13 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: API-Gateway
+eureka:
+  client:
+    eureka-server-port: 8761
+zuul:
+  routes:
+    subway:
+      url: http://localhost:8081/login
+      path: /login/**
