@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: @project.name@
+    formattedVersion: (v@project.version@)
+  datasource:
+    username: admin
+    password: Meg~7+inO
+    url: jdbc:postgresql://localhost:5432/account
+  jpa:
+    generate-ddl: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        temp:
+          use_jdbc_metadata_defaults: false
+    hibernate:
+      ddl-auto: update
+server:
+  port: 8083
+eureka:
+  client:
+    eureka-server-port: 8761
+logging:
+  level:
+    org:
+      springframework:
+        web=DEBUG:

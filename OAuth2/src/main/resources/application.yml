@@ -1,0 +1,33 @@
+spring:
+  datasource:
+    username: admin
+    password: Meg~7+inO
+    url: jdbc:postgresql://localhost:5432/auth_db
+  jpa:
+    generate-ddl: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        temp:
+          use_jdbc_metadata_defaults: false
+    hibernate:
+      ddl-auto: create
+  application:
+    name: OAuth2
+security:
+  oauth2:
+    client:
+      client-id: 889333912023-rn60i4nrj8g0mihec654c51j7la1j0mn.apps.googleusercontent.com
+      client-secret: peG2sBdzuFTNx7X4hreEPvJU
+      access-token-uri: https://www.googleapis.com/oauth2/v4/token
+      user-authorization-uri: https://accounts.google.com/o/oauth2/v2/auth
+      client-authentication-scheme: form
+      scope: openid,email,profile
+    resource:
+      user-info-uri: https://www.googleapis.com/oauth2/v3/userinfo
+      prefer-token-info: true
+server:
+  port: 8081
+eureca:
+  client:
+    eureka-server-port: 8761

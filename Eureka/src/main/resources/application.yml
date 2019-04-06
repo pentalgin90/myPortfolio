@@ -10,3 +10,7 @@ logging:
       netflix:
         eureka: OFF
         discovery: OFF
+spring:
+  application:
+          name: @project.name@
+          formattedVersion: (v@project.version@)

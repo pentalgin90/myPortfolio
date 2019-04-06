@@ -2,12 +2,16 @@ server:
   port: 8080
 spring:
   application:
-    name: API-Gateway
+    name: @project.name@
+    formattedVersion: (v@project.version@)
 eureka:
   client:
     eureka-server-port: 8761
 zuul:
   routes:
     subway:
-      url: http://localhost:8081/login
-      path: /login/**
+      url: http://127.0.0.1:8083/spend
+      path: /spend/**
+    rates:
+      url: https://heroku-exchange-rates.herokuapp.com/rates
+      path: /rates/**
