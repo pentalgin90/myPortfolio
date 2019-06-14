@@ -1,6 +1,6 @@
-  _____                  _
- |__  /  _   _   _   _  | |
-   / /  | | | | | | | | | |
-  / /_  | |_| | | |_| | | |
- /____|  \__,_|  \__,_| |_|
+${Ansi.GREEN}  _____                  _
+${Ansi.GREEN} |__  /  _   _   _   _  | |
+${Ansi.GREEN}   / /  | | | | | | | | | |
+${Ansi.GREEN}  / /_  | |_| | | |_| | | |
+${Ansi.GREEN} /____|  \__,_|  \__,_| |_|
 ${spring.application.name}             ${spring.application.formattedVersion}

@@ -15,3 +15,6 @@ zuul:
     rates:
       url: https://heroku-exchange-rates.herokuapp.com/rates
       path: /rates/**
+    user:
+      url: http://127.0.0.1:8083/user
+      path: /user/**

@@ -1,7 +1,7 @@
- _____                     _
-|  ___|                   | |
-| |__   _   _  _ __   ___ | | __  __ _
-|  __| | | | || '__| / _ \| |/ / / _` |
-| |___ | |_| || |   |  __/|   < | (_| |
-\____/  \__,_||_|    \___||_|\_\ \__,_|
-${spring.application.name}             ${spring.application.formattedVersion}
+${Ansi.MAGENTA} _____                     _
+${Ansi.MAGENTA}|  ___|                   | |
+${Ansi.MAGENTA}| |__   _   _  _ __   ___ | | __  __ _
+${Ansi.MAGENTA}|  __| | | | || '__| / _ \| |/ / / _` |
+${Ansi.MAGENTA}| |___ | |_| || |   |  __/|   < | (_| |
+${Ansi.MAGENTA}\____/  \__,_||_|    \___||_|\_\ \__,_|
+${Ansi.GREEN} ${spring.application.name}             ${spring.application.formattedVersion}

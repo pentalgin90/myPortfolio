@@ -9,7 +9,7 @@ import javax.persistence.*;
 import java.util.Date;
 @Entity
 @Table(name = "spend")
-@ToString(of = {"id", "costs", "name"})
+@ToString(of = {"id", "costs", "name", "user"})
 @EqualsAndHashCode(of = {"id"})
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Spend {
@@ -21,14 +21,18 @@ public class Spend {
     @Column(updatable = false)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private Date dateEvent;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private Usr user;
 
     public Spend() {
     }
 
-    public Spend(Integer costs, Date dateEvent, String name) {
+    public Spend(Integer costs, Date dateEvent, String name, Usr user) {
         this.costs = costs;
         this.dateEvent = dateEvent;
         this.name = name;
+        this.user = user;
     }
 
     public Integer getCosts() {
@@ -61,5 +65,13 @@ public class Spend {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Usr getUser() {
+        return user;
+    }
+
+    public void setUser(Usr user) {
+        this.user = user;
     }
 }

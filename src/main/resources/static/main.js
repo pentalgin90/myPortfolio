@@ -9,6 +9,7 @@ function getIndex(list, id) {
 }
 var spendApi = Vue.resource('spend');
 var ratesApi = Vue.resource('rates');
+var userApi = Vue.resource('user');
 Vue.component('spend-form', {
     props: ['spends', 'spendAttr'],
     data: function () {
@@ -60,7 +61,7 @@ Vue.component('spend-form', {
 Vue.component('spends-row', {
     props: ['spend', 'editMethod', 'spends', 'selected'],
     template: '<div>' +
-        '<i>({{ spend.id }})</i>{{ spend.name }} {{ spend.costs * selected }}' +
+        '<i>({{ spend.id }})</i>{{ spend.name }} {{ Math.round(parseFloat(spend.costs * selected) * 100) / 100 }} {{spend.user.username}}' +
         '<span style="position: absolute; right: 0">' +
         '<input type="button" value="Edit" @click="edit"/>' +
         '<input type="button" value="X" @click="del"/>' +
@@ -130,12 +131,19 @@ Vue.component('rates-list',{
     methods:{
         edit:function () {
             this.editSelected(this.cost);
+        },
+        getRate:function (shortName) {
+            ratesApi.get(shortName).then(result =>
+            result.json().then(data =>
+            data.forEach(rate => this.rates.push(rate))
+                )
+            )
         }
     }
 });
 
 var app = new Vue({
-    el:'#app',
+    el:'#spend',
     template: '<div>' +
         '<spends-list :spends="spends" :selected="selected"/>' +
         '<rates-list :rates="rates" :selected="selected" :editSelected="editSelected"/>' +
@@ -143,11 +151,46 @@ var app = new Vue({
     data: {
         spends: [],
         rates: [],
-        selected: '65.27375'
+        selected: '64.755'
     },
     methods:{
         editSelected:function (cost) {
             this.selected = cost;
         }
+    }
+});
+
+Vue.component('user-row',{
+    props: ['user', 'users'],
+    template: '<div>' +
+        '<i>({{ user.id }})</i>{{ user.username }} {{ user.lastname }} {{ user.salary }} {{user.defaultCurrency}}' +
+        '</div>'
+});
+
+Vue.component('user-list',{
+    props: ['users'],
+    data: function(){
+        return{
+            user: null
+        }
+    },
+    template: '<div>' +
+        '<user-row v-for="user in users" :key="user.id" :user="user" :users="users" />' +
+        '</div>',
+    created: function () {
+        userApi.get().then(data =>
+            data.json().then(data =>
+                data.forEach(user => this.users.push(user))
+            )
+        )
+    }
+});
+
+var user = new Vue({
+    el:'#user',
+    template: '<user-list :users="users"/>',
+    data:{
+        users: [],
+        rate: 'RUB'
     }
 });

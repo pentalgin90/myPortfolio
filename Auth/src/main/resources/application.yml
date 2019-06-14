@@ -1,0 +1,9 @@
+server:
+  port: 9100
+spring:
+  application:
+    name: @project.name@
+    formattedVersion: (v@project.version@)
+eureka:
+  client:
+    eureka-server-port: 8761
