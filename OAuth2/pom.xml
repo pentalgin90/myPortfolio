@@ -19,7 +19,7 @@
         <spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
         <lombok.version>1.18.4</lombok.version>
         <oauth2>2.1.2.RELEASE</oauth2>
-        <postgresql>42.2.5</postgresql>
+        <postgresql>42.3.3</postgresql>
         <jwt.version>0.9.1</jwt.version>
     </properties>
 
